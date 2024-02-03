@@ -252,13 +252,13 @@ namespace dxvk
     result = params->Get(NVSDK_NGX_Parameter_FrameGeneration_Available, &dlfgAvailable);
     if (NVSDK_NGX_FAILED(result) || !dlfgAvailable) {
       Logger::info(str::format("NVIDIA DLSS Frame Generation not available on this hardware/platform: ", resultToString(result)));
-      return false;
+      return true;
     }
 
     int needsUpdatedDriver = 0;
     if (NVSDK_NGX_FAILED(params->Get(NVSDK_NGX_Parameter_FrameGeneration_NeedsUpdatedDriver, &needsUpdatedDriver))) {
       Logger::warn("NVIDIA DLSS Frame generation failed to initialize");
-      return false;
+      return true;
     }
 
     // check all the reasons to make sure we present everything to the user at once
@@ -274,7 +274,7 @@ namespace dxvk
       }
 
       m_dlfgNotSupportedReason = m_dlfgNotSupportedReason + message;
-      ret = false;
+      ret = true;
     }
 
     bool hardwareSchedulingEnabled = checkHardwareSchedulingEnabled(m_device);

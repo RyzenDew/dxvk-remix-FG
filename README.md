@@ -1,4 +1,4 @@
-# dxvk-remix
+# dxvk-remix-FG
 
 [![Build Status](https://github.com/NVIDIAGameWorks/dxvk-remix/actions/workflows/build.yml/badge.svg)](https://github.com/NVIDIAGameWorks/dxvk-remix/actions/workflows/build.yml)
 
